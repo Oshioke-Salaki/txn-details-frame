@@ -24,7 +24,6 @@ const app = new Frog<{ State: State }>({
     error: "",
   },
 });
-
 // Uncomment to use Edge Runtime
 // export const runtime = 'edge'
 
@@ -42,7 +41,7 @@ app.frame("/", async (c) => {
         return;
       }
       console.log(inputText);
-      const client = new CovalentClient("cqt_rQfxVDdbwYqrjyQgRRjjp6dkCcr9");
+      const client = new CovalentClient(`${process.env.NEXT_COVALENT_API_KEY}`);
       const resp = await client.TransactionService.getTransaction(
         "eth-mainnet",
         inputText
